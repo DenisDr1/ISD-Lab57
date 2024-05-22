@@ -1,13 +1,57 @@
 @import 'main';
 // Міксини
-@mixin flex-center {
+@mixin flex
+{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap:$gap;
+    flex-wrap: wrap;
+    @media all and (max-width: 1220px)
+    {
+        gap:10px;
+    }
 }
 
-@mixin container {
-    max-width: $width;
-    margin: 0 auto;
-    padding: 0 15px;
+@mixin a($color1,$color12)
+{
+    color:$color11;
+    font-weight: 500;
+    text-decoration: underline;
+    &:hover
+    {
+        color:$color12;
+        transition: color 2s ease;
+    }
+    &:not(hover)
+    {
+        color:$color11;
+        transition: color 2s ease;
+    }
+}
+
+@mixin button($w,$h)
+{
+    @include flex();
+    background-color: $button-color-main;
+    color:$secondary-color;
+    width: $w;
+    height: $h;
+    border-radius: $h - 10px;
+    cursor: pointer;
+        @include font-size($p-font-size);
+    @media all and (max-width: 680px)
+    {
+        width: $w * 0.6;
+        height: $h * 0.6;
+    }
+}
+
+@mixin font-size ($fz)
+{
+    font-size: $fz;
+    @media all and (max-width: 680px)
+    {
+        font-size:$fz * 0.5;
+    }
 }
