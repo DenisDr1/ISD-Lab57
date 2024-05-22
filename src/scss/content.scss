@@ -1,0 +1,52 @@
+@import 'main';
+@import 'mixin';
+
+main {
+    height: $content-heigth;
+    @include container;
+
+    h2 {
+        font-family: 'Cormorant Infant', serif;
+        font-size: $h2-font-size;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .filters {
+        @include flex-center;
+        margin-bottom: 20px;
+
+        button {
+            background-color: $secondary-color;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    }
+
+    h3 {
+        font-family: 'Cormorant Infant', serif;
+        font-size: $h3-font-size;
+        margin-bottom: 20px;
+    }
+
+    .recommendations {
+        display: flex;
+        justify-content: space-between;
+
+        .card {
+            width: 30%;
+            height: 200px;
+            background-color: $secondary-color;
+            color: white;
+            padding: 20px;
+            text-align: center;
+
+            p {
+                margin: 10px 0;
+            }
+        }
+    }
+}

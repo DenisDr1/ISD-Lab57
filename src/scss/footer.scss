@@ -1,0 +1,21 @@
+@import 'main';
+@import 'mixin';
+
+footer {
+    height: $footer-heigth;
+    background-color: $primary-color;
+    color: white;
+    @include container;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        color: white;
+        margin: 0 10px;
+
+        i {
+            font-size: 20px;
+        }
+    }
+}

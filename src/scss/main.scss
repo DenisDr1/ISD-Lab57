@@ -2,12 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
 // Кольори
-$citrus: #faaf08;
-$grapefruit: #fa812f;
-$ruby-red: #fa4032;
-$white-pink: #fef3e2;
-$gray: #545465;
-$dark-gray:#2A2940;
+$primary-color: #660033;
+$secondary-color: #999999;
+$background-color: #f7f7f7;
+$text-color: #333333;
 // Розміри
 $width: 1440px;
 $header-heigth: 144px;
@@ -23,13 +21,12 @@ $h3-font-size: 24px;
 
 html {
     font-size: $p-font-size;
-    color: $gray;
-    background-color: $white-pink;
+    background-color: $background-color;
 }
 
 body {
     max-width: $width;
     margin: auto;
-    font-family: 'Noto Sans';
-    color: $dark-gray;
+    font-family: 'Noto Sans', sans-serif;
+    color: $text-color;
 }
