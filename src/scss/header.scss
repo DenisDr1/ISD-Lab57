@@ -1,3 +1,60 @@
 @import 'main';
 @import 'mixin';
 
+$gap: 300px;
+
+header
+{
+    @include flex();
+    height: 100px;
+    
+}
+
+// Перший рядок з лого та назвою
+.header_logo_name
+{
+    @include flex();
+    // Для екранів менших за 1220px
+    @media all and (max-width: 800px)
+    {
+        height: 80px;
+        a {
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        h2 {
+            font-size: $h3-font-size;
+        }
+    }
+    @media all and (max-width: 576px)
+    {
+        height: 60px;
+        gap: 30px;
+    }
+    @media all and (max-width:376px)
+    {
+        height: 40px;
+    }
+}
+
+.sign_up
+{
+    @include flex();
+    width:102px;
+    height: 40px;
+    color:$white;
+    background-color:$button-color-main;
+    border-radius: 8px;
+    &:hover
+    {
+        background-color: $button-color-additional;
+        transition: background-color 0.7s ease;
+    }
+    &:not(hover)
+    {
+        background-color: $button-color-main;
+        transition: background-color 0.7s ease;
+    }
+}
