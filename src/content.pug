@@ -1,22 +1,41 @@
-<!--main
-    .container
-    h2 Оренда перевіреної нерухомості
-    .filters
-        button Обрати нерухомість
-        button Обрати ринок
-        button Обрати регіон
-        button Пошук
-    h3 Рекомендовані пропозиції
-    .recommendations
-        card
-            p Назва
-            p Ціна
-            p Регіон
-        .card
-            p Назва
-            p Ціна
-            p Регіон
-        .card
-            p Назва
-            p Ціна
-            p Регіон-->
+main.content
+    article 
+        section.buttons
+            div.contentContainer
+                h1 Оренда перевіреної нерухомості
+                div.buttonContainer
+                    button(type="button" class="dropdown-btn") Обрати нерухомість
+                        //div.dropdown-content
+                            //a(href="#") Квартира
+                            //a(href="#") Будинок
+                    button(type="button" class="dropdown-btn") Обрати ринок
+                        //div.dropdown-content
+                            //a(href="#") Новобудови
+                            //a(href="#") Вторинний
+                    button(type="button" class="dropdown-btn") Обрати регіон
+                        //div.dropdown-content
+                            //a(href="#") Київ
+                            //a(href="#") Львів
+                            //a(href="#") Харків
+                    button(type="button" class="button_accent") Пошук
+        section.recommendations
+            h2 Рекомендовані пропозиції
+            div.recommendationsContainer
+                div.recommendation
+                    div.recommendation_textBox
+                        p Назва
+                        p Ціна
+                        p Рейтинг
+                img()
+                div.recommendation
+                    div.recommendation_textBox
+                        p Назва
+                        p Ціна
+                        p Рейтинг
+                img()
+                div.recommendation
+                    div.recommendation_textBox
+                        p Назва
+                        p Ціна
+                        p Рейтинг
+                img()

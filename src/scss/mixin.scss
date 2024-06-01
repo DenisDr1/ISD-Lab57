@@ -39,13 +39,53 @@
     height: $h;
     border-radius: $h - 10px;
     cursor: pointer;
-        @include font-size($p-font-size);
+    @include font-size($p-font-size);
     @media all and (max-width: 680px)
     {
         width: $w * 0.6;
         height: $h * 0.6;
     }
 }
+
+@mixin button-hover($c) {
+    &:hover {
+        background-color: lighten($c, 10%);
+    }
+}
+
+/*@mixin dropdown-button() {
+    position: relative;
+
+    &.dropdown-btn {
+        @include button(200px, 55px);
+        @include button-hover($button-color-main);
+        font-weight: 600;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        z-index: 1;
+
+        a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+
+            &:hover {
+                background-color: #f1f1f1;
+            }
+        }
+    }
+
+    &:hover .dropdown-content {
+        display: block;
+    }
+}*/
 
 @mixin font-size ($fz)
 {

@@ -9,7 +9,7 @@ $white: #FFFFFF;
 $line-color: #C4C4C4;
 $background-color: #f7f7f7;
 $text-color: #9A1750;
-$button-color-main: #D0D0CE;
+$button-color-main: #ced0cf;
 $button-color-additional: #827A7A;
 // Розміри
 $width: 1440px;
@@ -35,6 +35,14 @@ body {
     margin: auto;
     font-family: 'Noto Sans', sans-serif;
     color: $text-color;
+    display: flex;
+    flex-direction: column;
+    @media all and (max-width: 410px) {
+        gap: 40px;
+    }
+    @media all and (max-width: 276px) {
+        gap: 100px;
+    }
 }
 
 h1

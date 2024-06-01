@@ -1,52 +1,60 @@
 @import 'main';
 @import 'mixin';
-/*
-main {
-    height: $content-heigth;
-    @include container;
 
-    h2 {
-        font-family: 'Cormorant Infant', serif;
-        font-size: $h2-font-size;
-        text-align: center;
-        margin: 20px 0;
+.content {
+    height: 700px;
+    @media all and (max-width: 800px)
+    {
+        height: 800px;
     }
+    @media all and (max-width: 576px)
+    {
+        height: 900px;
+    }
+    @media all and (max-width: 376px)
+    {
+        height: 1000px;
+    }
+}
 
-    .filters {
-        @include flex-center;
-        margin-bottom: 20px;
+article {
+    @include flex();
+    justify-content: initial;
+    margin-top: 15px;
+}
 
+.buttons {
+    @include flex();
+
+    .contentContainer {
+        @include flex();
+        width: 90%;
+        gap: 40px;
+    }
+    .buttonContainer {
+        @include flex();
         button {
-            background-color: $secondary-color;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            margin: 0 10px;
-            cursor: pointer;
+            @include button(200px, 55px);
+            @include button-hover($button-color-main);
+            font-weight: 600;
+        }
+        .button_accent {
+            @include button(200px, 55px);
+            @include button-hover($primary-color);
+            color: $white;
+            background-color: $primary-color;
         }
     }
-
-    h3 {
-        font-family: 'Cormorant Infant', serif;
-        font-size: $h3-font-size;
-        margin-bottom: 20px;
-    }
-
-    .recommendations {
-        display: flex;
-        justify-content: space-between;
-
-        .card {
-            width: 30%;
-            height: 200px;
-            background-color: $secondary-color;
-            color: white;
-            padding: 20px;
-            text-align: center;
-
-            p {
-                margin: 10px 0;
-            }
+    @media all and (max-width: 800px)
+    {
+        h1 {
+            font-size: $h2-font-size;
         }
     }
-}*/
+    @media all and (max-width: 576px)
+    {
+        h1 {
+            font-size: $h3-font-size;
+        }
+    }
+}
