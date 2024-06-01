@@ -4,19 +4,28 @@ main.content
             div.contentContainer
                 h1 Оренда перевіреної нерухомості
                 div.buttonContainer
-                    button(type="button" class="dropdown-btn") Обрати нерухомість
-                        //div.dropdown-content
-                            //a(href="#") Квартира
-                            //a(href="#") Будинок
-                    button(type="button" class="dropdown-btn") Обрати ринок
-                        //div.dropdown-content
-                            //a(href="#") Новобудови
-                            //a(href="#") Вторинний
-                    button(type="button" class="dropdown-btn") Обрати регіон
-                        //div.dropdown-content
-                            //a(href="#") Київ
-                            //a(href="#") Львів
-                            //a(href="#") Харків
+                    div.dropdown
+                        div.select
+                            span.selected Орендувати квартиру
+                            div.caret
+                        ul.menu 
+                            li Орендувати будинок
+                            li.active Орендувати квартиру
+                    div.dropdown
+                        div.select
+                            span.selected Новобудови
+                            div.caret
+                        ul.menu 
+                            li Вторинний ринок
+                            li.active Новобудови
+                    div.dropdown
+                        div.select
+                            span.selected Київ
+                            div.caret
+                        ul.menu 
+                            li Львів
+                            li Харків
+                            li.active Київ
                     button(type="button" class="button_accent") Пошук
         section.recommendations
             h2 Рекомендовані пропозиції
