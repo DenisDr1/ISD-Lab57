@@ -6,14 +6,27 @@ $gap: 300px;
 header
 {
     @include flex();
+    gap: 15px;
     height: 100px;
+    margin-top: 15px;
+    @media all and (max-width: 1220px) {
+        gap: 5px;
+    }
+    @media all and (max-width: 800px) {
+        gap: 1px;
+    }
+    @media all and (max-width: 410px) {
+        .lineh {
+            display: none;
+        }
+    }
+    
 }
 
 // Перший рядок з лого та назвою
 .header_logo_name
 {
     @include flex();
-    // Для екранів менших за 1220px
     @media all and (max-width: 800px)
     {
         height: 80px;
@@ -56,4 +69,10 @@ header
         background-color: $button-color-main;
         transition: background-color 0.7s ease;
     }
+}
+
+.lineh {
+    width: 80%;
+    height: 1px;
+    background: $line-color;
 }
