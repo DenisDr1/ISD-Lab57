@@ -1,26 +1,9 @@
 @import 'main';
 @import 'mixin';
 
-.content {
-    //height: 680px;
-    /*@media all and (max-width: 800px)
-    {
-        height: 800px;
-    }
-    @media all and (max-width: 576px)
-    {
-        height: 900px;
-    }
-    @media all and (max-width: 376px)
-    {
-        height: 1000px;
-    }*/
-}
-
 article {
     @include flex();
     justify-content: initial;
-    margin-top: 15px;
 }
 
 .buttons {
@@ -29,7 +12,7 @@ article {
     .contentContainer {
         @include flex();
         width: 90%;
-        gap: 40px;
+        gap: 20px;
         @media all and (max-width: 1220px) {
             gap: 10px;
         }

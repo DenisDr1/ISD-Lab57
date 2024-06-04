@@ -26,7 +26,7 @@ $p-font-size-small: 16px;
 $h1-font-size: 72px;
 $h2-font-size:  48px;
 $h3-font-size: 24px;
-$gap: 30px;
+$gap: 20px;
 
 html {
     font-size: $p-font-size;
@@ -40,6 +40,7 @@ body {
     color: $text-color;
     display: flex;
     flex-direction: column;
+    row-gap: 30px;
     @media all and (max-width: 410px) {
         gap: 40px;
     }
