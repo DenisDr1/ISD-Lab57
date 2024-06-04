@@ -1,21 +1,31 @@
 @import 'main';
 @import 'mixin';
-/*
-footer {
-    height: $footer-heigth;
-    background-color: $primary-color;
-    color: white;
-    @include container;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
+footer {
+    @include flex();
+}
+
+.container {
+    @include flex();
+    width: $width * 0.8;
+    background-color: $primary-color;
+    height: $footer-heigth;
+    color: white;
     a {
         color: white;
         margin: 0 10px;
+        transition: transform 0.3s ease; // Додаємо плавний перехід
 
         i {
             font-size: 20px;
         }
+
+        &:hover i {
+            transform: scale(1.2); // Збільшуємо іконки при наведенні
+        }
     }
-}*/
+    @media all and (max-width: 610px)
+    {
+        gap: 20px;
+    }
+}
