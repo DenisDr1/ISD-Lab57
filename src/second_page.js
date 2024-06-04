@@ -126,12 +126,6 @@ applyFiltersButton.addEventListener('click', () => {
   }
 });
 
-// Обробник кліку на кнопки "Детальніше"
-const detailButtons = document.querySelectorAll('.button_accent[data-apartment]');
-const modal = document.getElementById('apartmentModal');
-const modalTitle = modal.querySelector('.modal-title');
-const modalDescription = modal.querySelector('.modal-description');
-const closeModalButton = modal.querySelector('.close-button');
 
 const apartmentDetails = {
     1: {
@@ -167,29 +161,3 @@ const apartmentDetails = {
       contacts: 'Контактні дані орендодавця',
     },
   };
-  
-  // Додаємо обробник кліку для кнопок "Детальніше"
-  detailButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const apartmentId = button.getAttribute('data-apartment');
-      const details = apartmentDetails[apartmentId];
-      if (details) {
-        modalTitle.textContent = details.title;
-        modalDescription.textContent = details.description;
-        modal.style.display = 'block';
-      }
-    });
-  });
-  
-  // Додаємо обробник кліку для закриття модального вікна
-  closeModalButton.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-  
-  // Закриваємо модальне вікно при кліку поза ним
-  window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-  
