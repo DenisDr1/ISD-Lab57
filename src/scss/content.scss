@@ -170,3 +170,70 @@ article {
         }
     }
 }
+
+.recommendations {
+    @include flex();
+}
+
+.apartment_template {
+    @include flex();
+}
+
+// Картка з квартирою
+.apartment_template_box {
+    @include flex();
+    background: $line-color;
+    width: 400px;
+    height: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+
+    // Для екранів менших за 410px зменшуємо ширину картки
+    @media all and (max-width: 410px) {
+        width: 300px;
+    }
+
+    // Заголовок
+    h3 {
+        font-size: $h3-font-size;
+        font-family: 'Cormorant Infant';
+        font-weight: 600;
+        line-height: 30px;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    // Зображення
+    img {
+        width: 144px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 15px; // Додаємо заокруглення до зображення
+        // Для екранів менших за 410px зменшуємо ширину зображення
+        @media all and (max-width: 410px) {
+            width: 90px;
+            height: 100px;
+        }
+    }
+
+    // Блок з написами
+    .apartment_template_box__text {
+        @include flex();
+        gap: 21px;
+        flex-direction: column;
+        width: 50%;
+
+        // Текст
+        p {
+            font-size: $p-font-size-small;
+            color: $primary-color;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        // Посилання
+        a {
+            @include a($dark-gray, $red);
+        }
+    }
+}

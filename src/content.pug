@@ -29,22 +29,25 @@ main.content
                     button(type="button" class="button_accent") Пошук
         section.recommendations
             h2 Рекомендовані пропозиції
-            div.recommendationsContainer
-                div.recommendation
-                    div.recommendation_textBox
-                        p Назва
-                        p Ціна
-                        p Рейтинг
-                img()
-                div.recommendation
-                    div.recommendation_textBox
-                        p Назва
-                        p Ціна
-                        p Рейтинг
-                img()
-                div.recommendation
-                    div.recommendation_textBox
-                        p Назва
-                        p Ціна
-                        p Рейтинг
-                img()
+            section.apartment_template 
+                div.apartment_template_box
+                    div.apartment_template_box__text 
+                        h3 Квартира в центрі
+                        p Ціна: $50,000
+                        p Місто: Київ
+                        a(href="#") Переглянути
+                    img(src=require('./img/apartment1.jpg') alt="Apartment")
+                div.apartment_template_box
+                    div.apartment_template_box__text 
+                        h3 Квартира біля моря
+                        p Ціна: $50,000
+                        p Місто: Одеса
+                        a(href="#") Переглянути
+                    img(src=require('./img/apartment2.jpg') alt="Apartment") 
+                div.apartment_template_box
+                    div.apartment_template_box__text 
+                        h3 Простора квартира
+                        p Ціна: $50,000
+                        p Місто: Львів
+                        a(href="#") Переглянути
+                    img(src=require('./img/apartment3.jpg') alt="Apartment") 
