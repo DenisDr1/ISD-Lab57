@@ -5,12 +5,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: {
+        index: path.join(__dirname, 'src', 'index.js'),
+        second_page: path.join(__dirname, 'src', 'second_page.js'), // Додайте шлях до другого файлу JS
+    },
     output: {
-      path: path.join(__dirname, 'dist'),
-      filename: 'index.js',
-      // Налаштування для картинок. Зображення будуть зберігатися у папці images
-      assetModuleFilename: path.join('images', '[name].[ext]'),
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].js', // Використовуйте [name] для вибору імені з файлу входу
+        assetModuleFilename: path.join('images', '[name].[ext]'),
     },
     module: {
         rules: [
@@ -51,6 +53,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.pug'),
             filename: 'index.html',
+            chunks: ['index'],
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src', 'second_page.pug'),
+            filename: 'second_page.html',
+            chunks: ['second_page'],
         }),
         new FileManagerPlugin ({
             events: {

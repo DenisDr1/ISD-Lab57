@@ -1,8 +1,9 @@
-import './scss/main.scss'
-import './scss/reset.scss'
-import './scss/header.scss'
-import './scss/content.scss'
-import './scss/footer.scss'
+import './scss/main.scss';
+import './scss/mixin.scss';
+import './scss/reset.scss';
+import './scss/header.scss';
+import './scss/content.scss';
+import './scss/footer.scss';
 
 const dropdowns = document.querySelectorAll('.dropdown');
 
@@ -49,7 +50,7 @@ searchButton.addEventListener('click', () => {
 
   if (found) {
     // Перенаправлення на другу сторінку з необхідними даними
-    window.location.href = 'second-page.html';
+    window.location.href = 'second_page.html';
   } else {
     // Виведення повідомлення про помилку
     alert('Нерухомість не знайдено');

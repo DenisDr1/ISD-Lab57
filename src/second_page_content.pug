@@ -1,0 +1,92 @@
+main
+  article
+    section.buttons
+      div.buttonContainer
+        div.dropdown.price
+          div.select
+            span.selected Ціновий діапазон
+            div.caret
+          ul.menu
+            li
+              input(type="number" placeholder="Від")
+            li
+              input(type="number" placeholder="До")
+        div.dropdown.rooms
+          div.select
+            span.selected Кількість кімнат
+            div.caret
+          ul.menu
+            li 1
+            li 2
+            li 3
+            li 4
+        div.dropdown.area
+          div.select
+            span.selected Площа
+            div.caret
+          ul.menu
+            li
+              input(type="number" placeholder="Від")
+            li
+              input(type="number" placeholder="До")
+        div.dropdown.city
+          div.select
+            span.selected Місто
+            div.caret
+          ul.menu
+            li Львів
+            li Харків
+            li Київ
+    section.buttons
+        div.buttonContainer
+            button.button_accent.apply-filters Застосувати фільтри
+    section.cards 
+        h2 Орендувати квартиру в обраному місті
+        div.cards_template 
+            div.cards_template_box 
+                img(src=require('./img/apartment1.jpg') alt="Apartment")
+                div.cards_template_box__text
+                    h3 $50,000
+                    p Київ, вулиця Магістральна
+                    p 3 кімнати
+                    p Площа: 100 м2
+                section.buttons
+                    div.buttonContainer
+                        button.button_accent(data-apartment="1") Детальніше
+            div.cards_template_box 
+                img(src=require('./img/apartment2.jpg') alt="Apartment")
+                div.cards_template_box__text
+                    h3 $20,000
+                    p Київ, вулиця Магістральна
+                    p 2 кімнати
+                    p Площа: 50 м2
+                section.buttons
+                    div.buttonContainer
+                        button.button_accent(data-apartment="2") Детальніше
+            div.cards_template_box 
+                img(src=require('./img/apartment3.jpg') alt="Apartment")
+                div.cards_template_box__text
+                    h3 $10,000
+                    p Київ, вулиця Магістральна
+                    p 1 кімнати
+                    p Площа: 30 м2
+                section.buttons
+                    div.buttonContainer
+                        button.button_accent(data-apartment="3") Детальніше
+            div.cards_template_box 
+                img(src=require('./img/apartment4.jpg') alt="Apartment")
+                div.cards_template_box__text
+                    h3 $35,000
+                    p Одеса, вулиця Семена Палія
+                    p 2 кімнати
+                    p Площа: 70 м2
+                section.buttons
+                    div.buttonContainer
+                        button.button_accent(data-apartment="4") Детальніше
+
+// Модальне вікно
+div.modal#apartmentModal
+  div.modal-content
+    span.close-button &times;
+    h3.modal-title
+    p.modal-description
