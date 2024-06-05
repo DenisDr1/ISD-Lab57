@@ -148,67 +148,91 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Додаємо обробник подій для кнопки застосування фільтрів
-  const applyFiltersButton = document.querySelector('.apply-filters');
-  applyFiltersButton.addEventListener('click', () => {
+const applyFiltersButton = document.querySelector('.apply-filters');
+applyFiltersButton.addEventListener('click', () => {
     console.log('formData при натисканні apply-filters:', formData);
-    const isValidPrice = formData.price.from === null || formData.price.to === null || (formData.price.from < formData.price.to && formData.price.from > 0);
-    const isValidArea = formData.area.from === null || formData.area.to === null || (formData.area.from < formData.area.to && formData.area.from > 0);
-    const isValidRooms = formData.rooms !== null;
-    const isValidCity = formData.city !== null;
+
+    // Валідація фільтрів
+    const isValidPrice = validatePrice(formData.price);
+    const isValidArea = validateArea(formData.area);
+    const isValidRooms = validateRooms(formData.rooms);
+    const isValidCity = validateCity(formData.city);
 
     console.log('Результати валідації:', { isValidPrice, isValidArea, isValidRooms, isValidCity });
 
-    if (isValidPrice && isValidArea && (isValidRooms || isValidCity)) {
-      console.log('Всі значення валідні. Дані для відправки:', formData);
-      filterApartments(formData);
+    if (isValidPrice || isValidArea || isValidRooms || isValidCity) {
+        console.log('Всі значення валідні. Дані для відправки:', formData);
+        filterApartments(formData);
     } else {
-      alert('Заповніть всі поля коректно.');
+        alert('Заповніть всі поля коректно.');
     }
     // Оновлюємо значення середньої вартості на сторінці
     displayAveragePrice();
-  });
+});
 
-  // Знаходимо всі елементи з класом 'cards_template_box'
-  const apartments = document.querySelectorAll('.cards_template_box');
-  
-  // Функція фільтрації квартир за заданими фільтрами
-  const filterApartments = (filters) => {
+// Знаходимо всі елементи з класом 'cards_template_box'
+const apartments = document.querySelectorAll('.cards_template_box');
+const header = document.querySelector('.cards h2');
+
+// Функція валідації ціни
+const validatePrice = (price) => {
+    return price.from === null || price.to === null || (price.from < price.to && price.from > 0 && price.to > 0);
+};
+
+// Функція валідації площі
+const validateArea = (area) => {
+    return area.from === null || area.to === null || (area.from < area.to && area.from > 0 && area.to > 0);
+};
+
+// Функція валідації кількості кімнат
+const validateRooms = (rooms) => {
+    return rooms !== null;
+};
+
+// Функція валідації міста
+const validateCity = (city) => {
+    return city !== null;
+};
+
+// Функція фільтрації квартир за заданими фільтрами
+const filterApartments = (filters) => {
     let apartmentsFound = false;
     apartments.forEach(apartment => {
-      const price = parseInt(apartment.querySelector('h3').innerText.replace('$', '').replace(',', ''));
-      const city = apartment.querySelector('p:nth-of-type(1)').innerText.split(',')[0];
-      const rooms = parseInt(apartment.querySelector('p:nth-of-type(2)').innerText.split(' ')[0]);
-      const area = parseInt(apartment.querySelector('p:nth-of-type(3)').innerText.replace('Площа: ', '').replace(' м2', ''));
+        const price = parseInt(apartment.querySelector('h3').innerText.replace('$', '').replace(',', ''));
+        const city = apartment.querySelector('p:nth-of-type(1)').innerText.split(',')[0];
+        const rooms = parseInt(apartment.querySelector('p:nth-of-type(2)').innerText.split(' ')[0]);
+        const area = parseInt(apartment.querySelector('p:nth-of-type(3)').innerText.replace('Площа: ', '').replace(' м2', ''));
 
-      let matchesPrice = true;
-      let matchesCity = true;
-      let matchesRooms = true;
-      let matchesArea = true;
+        let matchesPrice = true;
+        let matchesCity = true;
+        let matchesRooms = true;
+        let matchesArea = true;
 
-      if (filters.price.from !== null && filters.price.to !== null) {
-        matchesPrice = price >= filters.price.from && price <= filters.price.to;
-      }
-      if (filters.city !== null) {
-        matchesCity = filters.city === city;
-      }
-      if (filters.rooms !== null) {
-        matchesRooms = filters.rooms == rooms;
-      }
-      if (filters.area.from !== null && filters.area.to !== null) {
-        matchesArea = area >= filters.area.from && area <= filters.area.to;
-      }
+        if (filters.price.from !== null && filters.price.to !== null) {
+            matchesPrice = price >= filters.price.from && price <= filters.price.to;
+        }
+        if (filters.city !== null) {
+            matchesCity = filters.city === city;
+        }
+        if (filters.rooms !== null) {
+            matchesRooms = filters.rooms == rooms;
+        }
+        if (filters.area.from !== null && filters.area.to !== null) {
+            matchesArea = area >= filters.area.from && area <= filters.area.to;
+        }
 
-      if (matchesPrice && matchesCity && matchesRooms && matchesArea) {
-        apartment.style.display = 'flex';
-        apartmentsFound = true;
-      } else {
-        apartment.style.display = 'none';
-      }
+        if (matchesPrice && matchesCity && matchesRooms && matchesArea) {
+            apartment.style.display = 'flex';
+            apartmentsFound = true;
+        } else {
+            apartment.style.display = 'none';
+        }
     });
     if (!apartmentsFound) {
-      document.querySelector('.cards').innerHTML = "<p>Квартири не знайдено.</p>";
-    }
-  };
+      header.innerText = 'Квартири не знайдено';
+      apartmentsFound = false;
+  } 
+};
 
   // Знаходимо елементи модального вікна
   const modal = document.getElementById('modal');
@@ -248,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modalContacts.innerText = details.contacts;
 
       // Відображаємо модальне вікно
-      modal.style.display = 'block';
+      modal.style.display = 'flex';
     });
   });
 
@@ -287,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       // Викликаємо функцію для обчислення середньої вартості після скидання фільтрів
       displayAveragePrice();
+      header.innerText = 'Орендувати квартиру в обраному місті';
     }
     else {
       alert('Нічого скидувати.');
