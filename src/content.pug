@@ -24,7 +24,7 @@ main.content
                             div.caret
                         ul.menu 
                             li Львів
-                            li Харків
+                            li Одеса
                             li.active Київ
                     button(type="button" class="button_accent") Пошук
         section.recommendations
@@ -35,19 +35,35 @@ main.content
                         h3 Квартира в центрі
                         p Ціна: $50,000
                         p Місто: Київ
-                        a(href="#") Переглянути
+                        section.buttons
+                            div.buttonContainer
+                                button.button_details(data-apartment="1") Детальніше
                     img(src=require('./img/apartment1.jpg') alt="Apartment")
                 div.apartment_template_box
                     div.apartment_template_box__text 
                         h3 Квартира біля моря
                         p Ціна: $50,000
                         p Місто: Одеса
-                        a(href="#") Переглянути
+                        section.buttons
+                            div.buttonContainer
+                                button.button_details(data-apartment="2") Детальніше
                     img(src=require('./img/apartment2.jpg') alt="Apartment") 
                 div.apartment_template_box
                     div.apartment_template_box__text 
                         h3 Простора квартира
                         p Ціна: $50,000
-                        p Місто: Львів
-                        a(href="#") Переглянути
+                        p Місто: Київ
+                        section.buttons
+                            div.buttonContainer
+                                button.button_details(data-apartment="3") Детальніше
                     img(src=require('./img/apartment3.jpg') alt="Apartment") 
+
+#modal.modal
+  .modal-content
+    span.close &times;
+    h3#modal-title
+    p#modal-general-desc
+    p#modal-description
+    p#modal-accommodation
+    p#modal-district-rating
+    p#modal-contacts

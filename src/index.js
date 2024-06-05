@@ -5,6 +5,42 @@ import './scss/header.scss';
 import './scss/content.scss';
 import './scss/footer.scss';
 
+// Об'єкт з деталями квартир
+const apartmentDetails = {
+  1: {
+    title: '$50,000 - Київ, вулиця Магістральна', // Назва та адреса квартири 1
+    general_desc: 'Загальна площа: 100 м2; Поверх: 5; Поверховість: 10; Опалення: центральне;', // Загальний опис квартири 1
+    description: 'Опис квартири 1...', // Додатковий опис квартири 1
+    accommodation: 'Умови проживання:', // Умови проживання у квартирі 1
+    district_rating: 'Рейтинг району: 8/10', // Рейтинг району для квартири 1
+    contacts: 'Контактні дані орендодавця', // Контактна інформація орендодавця для квартири 1
+  },
+  2: {
+    title: '$20,000 - Київ, вулиця Магістральна', // Назва та адреса квартири 2
+    general_desc: 'Загальна площа: 50 м2; Поверх: 3; Поверховість: 10; Опалення: центральне;', // Загальний опис квартири 2
+    description: 'Опис квартири 2...', // Додатковий опис квартири 2
+    accommodation: 'Умови проживання:', // Умови проживання у квартирі 2
+    district_rating: 'Рейтинг району: 7/10', // Рейтинг району для квартири 2
+    contacts: 'Контактні дані орендодавця', // Контактна інформація орендодавця для квартири 2
+  },
+  3: {
+    title: '$10,000 - Київ, вулиця Магістральна', // Назва та адреса квартири 3
+    general_desc: 'Загальна площа: 30 м2; Поверх: 2; Поверховість: 5; Опалення: центральне;', // Загальний опис квартири 3
+    description: 'Опис квартири 3...', // Додатковий опис квартири 3
+    accommodation: 'Умови проживання:', // Умови проживання у квартирі 3
+    district_rating: 'Рейтинг району: 6/10', // Рейтинг району для квартири 3
+    contacts: 'Контактні дані орендодавця', // Контактна інформація орендодавця для квартири 3
+  },
+  4: {
+    title: '$35,000 - Одеса, вулиця Семена Палія', // Назва та адреса квартири 4
+    general_desc: 'Загальна площа: 70 м2; Поверх: 4; Поверховість: 9; Опалення: автономне;', // Загальний опис квартири 4
+    description: 'Опис квартири 4...', // Додатковий опис квартири 4
+    accommodation: 'Умови проживання:', // Умови проживання у квартирі 4
+    district_rating: 'Рейтинг району: 9/10', // Рейтинг району для квартири 4
+    contacts: 'Контактні дані орендодавця', // Контактна інформація орендодавця для квартири 4
+  },
+};
+
 const dropdowns = document.querySelectorAll('.dropdown');
 
 dropdowns.forEach(dropdown => {
@@ -55,4 +91,46 @@ searchButton.addEventListener('click', () => {
     // Виведення повідомлення про помилку
     alert('Нерухомість не знайдено');
   }
+});
+
+// Знаходимо елементи модального вікна
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalGeneralDesc = document.getElementById('modal-general-desc');
+const modalDescription = document.getElementById('modal-description');
+const modalAccommodation = document.getElementById('modal-accommodation');
+const modalDistrictRating = document.getElementById('modal-district-rating');
+const modalContacts = document.getElementById('modal-contacts');
+const closeModal = document.querySelector('.close');
+
+// Додаємо обробник подій для кнопки закриття модального вікна
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Закриваємо модальне вікно при кліку за його межами
+window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Додаємо обробник подій для кнопок перегляду деталей квартир
+const detailButtons = document.querySelectorAll('.button_details[data-apartment]');
+detailButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const apartmentId = button.getAttribute('data-apartment');
+        const details = apartmentDetails[apartmentId];
+
+        // Заповнюємо дані модального вікна деталями квартири
+        modalTitle.innerText = details.title;
+        modalGeneralDesc.innerText = details.general_desc;
+        modalDescription.innerText = details.description;
+        modalAccommodation.innerText = details.accommodation;
+        modalDistrictRating.innerText = details.district_rating;
+        modalContacts.innerText = details.contacts;
+
+        // Відображаємо модальне вікно
+        modal.style.display = 'block';
+    });
 });

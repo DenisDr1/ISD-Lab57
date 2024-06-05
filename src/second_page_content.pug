@@ -40,6 +40,8 @@ main
     section.buttons
         div.buttonContainer
             button.button_accent.apply-filters Застосувати фільтри
+            button.button_accent.reset-filters Скинути фільтри
+    p Середня вартість: #{averagePrice}
     section.cards 
         h2 Орендувати квартиру в обраному місті
         div.cards_template 
@@ -83,3 +85,13 @@ main
                 section.buttons
                     div.buttonContainer
                         button.button_accent(data-apartment="4") Детальніше
+
+#modal.modal
+  .modal-content
+    span.close &times;
+    h3#modal-title
+    p#modal-general-desc
+    p#modal-description
+    p#modal-accommodation
+    p#modal-district-rating
+    p#modal-contacts
